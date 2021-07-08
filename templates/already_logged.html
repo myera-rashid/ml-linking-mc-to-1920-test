@@ -1,0 +1,17 @@
+<!DOCTYPE  html>
+<html lang="en">
+  <head>
+    <title> Linking app </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  </head>
+<body>
+<h1> Hello Linker! </h1>
+    <form action='/choose_project' method='GET'>
+        <button class='btn btn-warning' type='submit'> See Projects </button>
+    </form>
+    <form action='/logout'>
+        <button class='btn btn-dark' type='submit'> Log out </button>
+    </form>
+
+</body>
+</html>

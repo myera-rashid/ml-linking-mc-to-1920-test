@@ -1,0 +1,97 @@
+<!DOCTYPE  html>
+<html lang="en">
+  <head>
+    <title> Linking app </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  </head>
+<body>
+    <div class="container">
+      <div class="header">
+        <nav>
+          <ul class="nav nav-pills float-right">
+              <li role="presentation" class="active"> <b><u>Number of records done:</u><br> {{total_matches}} </b></li>
+            <li role="presentation" class='active'><a href="/logout" class="btn btn-dark">Logout</a></li>
+          </ul>
+        </nav>
+      </div>
+<div class="container">
+<h1> Project 1 </h1>
+    <h2> Searching for: </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                <th> Husband First Name </th>
+                <th> Husband Last Name </th>
+                <th> Husband Year of Birth </th>
+                <th> Wife First Name </th>
+                <th> Wife Year of Birth </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for i in ia1[:-1] %}
+                 <td> {{i}} </td>
+                    {% endfor %}
+                </tr>
+            </tbody>
+        </table>
+    <h2> Possible matches: </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                   <th> Husband First Name </th>
+                    <th> Husband Last Name </th>
+                    <th> Husband Year of Birth </th>
+                    <th> Wife First Name </th>
+                    <th> Wife Year of Birth </th>
+                    <th> Match? </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in ib2 %}
+                <form action='/picklink' method='POST'>
+                    <input type="hidden" name="id_1" value={{ia1[-1]}} />
+                    <input type="hidden" name="id_2" value={{i[-1]}} />
+                    <input type="hidden" name="time_1" value={{time_1}} />
+                    <tr>
+                        {% for j in i[:-1] %}
+                            <td>{{j}}</td>
+                        {% endfor %}
+                        <!--<td><input type='radio' value='{{i}}' name='{{ib2}}' /></td>-->
+                        <td><button class='btn btn-success' type='submit'>Select</button></td>
+                    </tr>
+                </form>
+                {% endfor %}
+
+                <!-- Button for multiple matches-->
+                <form action='/picklink' method='POST'>
+                    <input type="hidden" name="id_1" value={{ia1[-1]}} />
+                    <input type="hidden" name="id_2" value='multiple' />
+                    <input type="hidden" name="time_1" value={{time_1}} />
+                    <tr>
+                        <td><button class='btn btn-primary' type='submit'>Multiple</button></td>
+                    </tr>
+                </form>
+                <!-- Button for NO matches-->
+                <form action='/picklink' method='POST'>
+                    <input type="hidden" name="id_1" value={{ia1[-1]}} />
+                    <input type="hidden" name="id_2" value='no_match' />
+                    <input type="hidden" name="time_1" value={{time_1}} />
+                    <tr>
+                        <td><button class='btn btn-warning' type='submit'>No matches</button></td>
+                    </tr>
+                </form>
+                <!-- Button for UNDO-->
+                <form action='/undo' method='POST'>
+                    <input type="hidden" name="old_id_1" value={{old_id_1}} />
+                    <tr>
+                        <td><button class='btn btn-danger' type='submit'>UNDO </button></td>
+                    </tr>
+                </form>
+            </tbody>
+        </table>
+    <!--<input type="submit" value="submit" />-->
+</div>
+</div>
+</body>
+</html>

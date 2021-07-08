@@ -1,0 +1,25 @@
+<!DOCTYPE  html>
+<html lang="en">
+  <head>
+    <title> Linking app </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  </head>
+<body>
+<div class="container">
+<h1> Choose project </h1>
+<table class="table">
+     <th>Projects</th>
+        <tr>
+            <td>Marriage Certificates to 1920 Census</td>
+            <td><form action='/linking' method='GET'>
+                <button class='btn btn-danger' type='submit'>Choose this Project </button>
+                </form>
+            </td>
+        </tr>
+</table>
+</div>
+</body>
+</html>
+
+
+

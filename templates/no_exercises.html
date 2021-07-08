@@ -1,0 +1,19 @@
+<!DOCTYPE  html>
+<html lang="en">
+  <head>
+    <title> Linking app </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  </head>
+<body>
+<h1> No more exercises!!! </h1>
+    <form action='/clean' method='GET'>
+        <input type="hidden" value="start again" />
+        <button class='btn btn-warning' type='submit'>Click here if you want to clean all your choices and start again </button>
+    </form>
+    <form action='/undo' method='POST'>
+        <input type="hidden" name="old_id_1" value={{old_id_1}} />
+        <button class='btn btn-danger' type='submit'>UNDO last one </button>
+    </form>
+
+</body>
+</html>
