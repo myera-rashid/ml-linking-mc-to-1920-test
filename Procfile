@@ -1,1 +1,1 @@
-web: gunicorn ml_linking:ml_linking
+web: gunicorn ml_linking:server
